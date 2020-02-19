@@ -1,2 +1,2 @@
 # 04-Space-Shooter
-SPACE SHOOTER
+SPACE SHOOTER for Game technology class
