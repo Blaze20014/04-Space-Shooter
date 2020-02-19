@@ -1,0 +1,31 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/Explosion.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/PNG_Parts&Spriter_Animation/Explosions/Explosion1/Explosion1_6.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/PNG_Parts&Spriter_Animation/Explosions/Explosion1/Explosion1_1.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/PNG_Parts&Spriter_Animation/Explosions/Explosion1/Explosion1_2.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/PNG_Parts&Spriter_Animation/Explosions/Explosion1/Explosion1_4.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/PNG_Parts&Spriter_Animation/Explosions/Explosion1/Explosion1_10.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/PNG_Parts&Spriter_Animation/Explosions/Explosion1/Explosion1_9.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/PNG_Parts&Spriter_Animation/Explosions/Explosion1/Explosion1_11.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/PNG_Parts&Spriter_Animation/Explosions/Explosion1/Explosion1_8.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/PNG_Parts&Spriter_Animation/Explosions/Explosion1/Explosion1_3.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/PNG_Parts&Spriter_Animation/Explosions/Explosion1/Explosion1_7.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/PNG_Parts&Spriter_Animation/Explosions/Explosion1/Explosion1_5.png" type="Texture" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 2 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Explosion" type="Node2D"]
+position = Vector2( 350, 0 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 1
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]

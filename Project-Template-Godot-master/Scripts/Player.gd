@@ -10,16 +10,19 @@ var velocity = Vector2(0,0)
 
 onready var VP = get_viewport_rect().size
 
+onready var Bullet = load("res://Scenes/Bullet.tscn")
+
 signal health_changed
 signal score_changed
 
 func _ready():
-	pass # Replace with function body.
+	emit_signal("health_changed")
+	emit_signal("score_changed")
 
 func change_Health(h):
-	health -= h
+	health += h
 	emit_signal("health_changed")
-	if health == 0:
+	if health <= 0:
 		die()
 
 func change_Score(s):
@@ -27,12 +30,16 @@ func change_Score(s):
 	emit_signal("score_changed")
 
 func die():
-	#quene_free()
-	pass
+	queue_free()
+	get_tree().change_scene("res://Scenes/GameOver.tscn")
 
 func _physics_process(delta):
 	if Input.is_action_pressed("Fire"):
-		pass
+		var b = Bullet.instance()
+		b.position = position
+		b.position.x += 100
+		get_node("/root/Game/Bullets").fire(b)
+		
 	if Input.is_action_pressed("Left"):
 		velocity.x -= acceleration
 	if Input.is_action_pressed("Right"):
